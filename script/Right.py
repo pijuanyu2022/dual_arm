@@ -161,38 +161,6 @@ class UR5Control(RobotControl):
             sim.simxSetJointTargetVelocity(clientID,jointhandles[6],p, sim.simx_opmode_streaming)                     # RG2 Gripper
         rospy.sleep(2.)  # stop 2 seconds for stable
 
-
-
-    def execute_plan(self, data, p):
-        # based on the plan, execute the movement of robot in the coppeliasim 
-        traj=data.joint_trajectory.points
-        for j in range (1,len(traj)):
-            targetpos=traj[j].positions
-            sim.simxSetJointTargetPosition(clientID,jointhandles[0],targetpos[0]-math.pi/2,sim.simx_opmode_streaming)  # Left arm joint 1
-            sim.simxSetJointTargetPosition(clientID,jointhandles[1],targetpos[1]+math.pi/2,sim.simx_opmode_streaming)  # Left arm joint 2
-            sim.simxSetJointTargetPosition(clientID,jointhandles[2],targetpos[2],sim.simx_opmode_streaming)            # Left arm joint 3
-            sim.simxSetJointTargetPosition(clientID,jointhandles[3],targetpos[3]+math.pi/2,sim.simx_opmode_streaming)  # Left arm joint 4
-            sim.simxSetJointTargetPosition(clientID,jointhandles[4],targetpos[4],sim.simx_opmode_streaming)            # Left arm joint 5
-            sim.simxSetJointTargetPosition(clientID,jointhandles[5],targetpos[5],sim.simx_opmode_oneshot_wait)         # Left arm joint 6
-            sim.simxSetJointTargetVelocity(clientID,jointhandles[6],p, sim.simx_opmode_streaming)                      # RG2 Gripper
-        rospy.sleep(2.)  # stop 2 seconds for stable
-
-    def execute_cartesian(self, data, p):
-        # based on the cartesian trajectory, execute the movement of the robot 
-        # make sure the joint 6 not change to keep stable
-        traj=data.joint_trajectory.points
-        for j in range (1,len(traj)):
-            targetpos=traj[j].positions
-            sim.simxSetJointTargetPosition(clientID,jointhandles[0],targetpos[0]-math.pi/2,sim.simx_opmode_streaming) # Left arm joint 1
-            sim.simxSetJointTargetPosition(clientID,jointhandles[1],targetpos[1]+math.pi/2,sim.simx_opmode_streaming) # Left arm joint 2
-            sim.simxSetJointTargetPosition(clientID,jointhandles[2],targetpos[2],sim.simx_opmode_streaming)           # Left arm joint 3
-            sim.simxSetJointTargetPosition(clientID,jointhandles[3],targetpos[3]+math.pi/2,sim.simx_opmode_streaming) # Left arm joint 4
-            sim.simxSetJointTargetPosition(clientID,jointhandles[4],targetpos[4],sim.simx_opmode_streaming)           # Left arm joint 5
-            i = len(traj)-1
-            sim.simxSetJointTargetPosition(clientID,jointhandles[5],traj[i].positions[5],sim.simx_opmode_oneshot_wait)# Left arm joint 6
-            sim.simxSetJointTargetVelocity(clientID,jointhandles[6],p, sim.simx_opmode_streaming)                     # RG2 Gripper
-        rospy.sleep(2.)  # stop 2 seconds for stable
-
     def add_object(self):
         # add a object as the ground
         scene = self.scene 
