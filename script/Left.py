@@ -144,9 +144,12 @@ class UR5Control(RobotControl):
                     plan = self.cartesian_path(math.pi/2, 0, math.pi/2, 0, 0, 0.01)
                     self.execute_cartesian(plan, -0.03)
                     
-
-                    p3 = [math.pi/2, math.pi, math.pi/2, -0.1175, -0.542, 0.582]
-                    plan = self.plan(p3)
+                    if i < 2: 
+                        p3 = [math.pi/2, math.pi, math.pi/2, -0.1175, -0.542, 0.582]
+                        plan = self.plan(p3)
+                    else:
+                        p3 = [math.pi/2, math.pi, math.pi/2, -0.1175, -0.542, 0.582]
+                        plan = self.plan_path(p3)                 
                     self.execute_cartesian(plan, -0.03)
 
                     # Go to the assembly position
