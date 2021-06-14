@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+
+<node pkg="dual_arm" output="screen" type="Right.py" name="Right" ns="UR52"/>
+<node pkg="dual_arm" output="screen" type="Left.py" name="Left" ns="UR51"/>
+
+</launch>
