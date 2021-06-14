@@ -94,7 +94,7 @@ class UR5Control(RobotControl):
                 self.execute_cartesian(plan, -0.03)
 
                 # wait for the right arm to avoid collision of two arms
-                rospy.sleep(10)
+                rospy.sleep(15)
 
 
                 # Assembling the first component
