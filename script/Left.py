@@ -89,7 +89,7 @@ class UR5Control(RobotControl):
 
                 # pick up the object, -0.03 means the gripper will close 
                 plan = self.cartesian_path(math.pi/2, 0, math.pi/2, 0, 0, 0)
-                self.execute_plan(plan, -0.03)
+                self.execute_cartesian(plan, -0.03)
 
                 # wait for the right arm to avoid collision of two arms
                 rospy.sleep(10)
