@@ -92,7 +92,7 @@ class UR5Control(RobotControl):
                 self.execute_plan(plan, -0.03)
 
                 # wait for the right arm to avoid collision of two arms
-                rospy.sleep(7)
+                rospy.sleep(10)
 
 
                 # Assembling the first component
