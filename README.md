@@ -30,7 +30,7 @@ Firstly, they will synchronously pick up the components which are put on a conve
 ---
 Quickstart: 
 
-##Step 1: Set up the docker environment from this quickstart https://docs.google.com/document/d/1N-un4wxBw6vXQwsOa1k-SFBNmGcGvfSj/edit 
+Step 1: Set up the docker environment from this quickstart https://docs.google.com/document/d/1N-un4wxBw6vXQwsOa1k-SFBNmGcGvfSj/edit 
 (make sure that you can correctly open the CoppeliaSim and roscore)
 
 Step 2: Open a new terminal, input the command :
